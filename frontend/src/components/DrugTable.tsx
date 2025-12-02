@@ -24,13 +24,14 @@ export default function DrugTable() {
   const theme = useTheme();
   const [drugs, setDrugs] = useState<Drug[]>([]);
   const [columnConfig, setColumnConfig] = useState<ColumnConfig[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [selectedCompany, setSelectedCompany] = useState<string>('');
 
   useEffect(() => {
     const load = async () => {
       try {
+        setLoading(true);
         const [drugsRes, configRes] = await Promise.all([
           fetchDrugs(),
           fetchTableConfig(),
@@ -86,6 +87,7 @@ export default function DrugTable() {
               field: 'id',
               headerName: col.label,
               width: 80,
+              sortable: false,
             };
 
           case 'code':
@@ -94,6 +96,7 @@ export default function DrugTable() {
               headerName: col.label,
               flex: 1,
               minWidth: 140,
+              sortable: false,
             };
 
           case 'name':
@@ -104,6 +107,7 @@ export default function DrugTable() {
               minWidth: 220,
               valueGetter: (_value, row) =>
                 `${(row as Drug).genericName} (${(row as Drug).brandName})`,
+              sortable: false,
             };
 
           case 'company':
@@ -112,6 +116,7 @@ export default function DrugTable() {
               headerName: col.label,
               flex: 2,
               minWidth: 220,
+              sortable: false,
             };
 
           case 'launchDate':
@@ -125,7 +130,7 @@ export default function DrugTable() {
                 const date = raw ? new Date(raw) : null;
                 return date ? date.toLocaleDateString() : '';
               },
-              sortable: true,
+              sortable: false,
             };
 
           default:
@@ -133,24 +138,25 @@ export default function DrugTable() {
               field: col.key,
               headerName: col.label,
               flex: 1,
+              sortable: false,
             };
         }
       }),
     [columnConfig]
   );
 
+  const handleCellClick = (params: GridCellParams) => {
+    if (params.field !== 'company') return;
+
+    const company = params.value as string | null;
+    if (!company) return;
+
+    // clear filter if same company is clicked again
+    setSelectedCompany((prev) => (prev === company ? '' : company));
+  };
+
   if (loading) return <div>Loading drug data…</div>;
   if (error) return <div>{error}</div>;
-
-  const handleCellClick = (params: GridCellParams) => {
-  if (params.field !== 'company') return;
-
-  const company = params.value as string | null;
-  if (!company) return;
-
-  // clear filter if same company is clicked again
-  setSelectedCompany((prev) => (prev === company ? '' : company));
-};
 
   return (
     <Box
@@ -165,7 +171,6 @@ export default function DrugTable() {
         flexDirection: 'column',
       }}
     >
-      {/* Green header bar with title only */}
       <Box
         sx={{
           bgcolor: theme.palette.primary.main,
@@ -176,12 +181,11 @@ export default function DrugTable() {
           color: theme.palette.primary.contrastText,
         }}
       >
-        <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
+        <Typography sx={{ fontWeight: 600 }}>
           Drug List
         </Typography>
       </Box>
 
-      {/* Content area (filter + grid) */}
       <Box
         sx={{
           flexGrow: 1,
@@ -193,14 +197,13 @@ export default function DrugTable() {
           pt: 1.5,
         }}
       >
-        {/* Filter by company just below "Drug List" */}
         <Box
           sx={{
             mb: 2,
             display: 'flex',
             justifyContent: 'flex-start',
-            height: 40, // fixed height for filter row
             alignItems: 'center',
+            height: 40,
           }}
         >
           <Autocomplete
@@ -219,23 +222,21 @@ export default function DrugTable() {
           />
         </Box>
 
-        {/* DataGrid fills all remaining vertical space and scrolls */}
         <Box sx={{ flexGrow: 1, minHeight: 0 }}>
           <DataGrid
             rows={gridRows}
             columns={gridColumns}
             initialState={{
-              pagination: { paginationModel: { pageSize: 100 } },
+              pagination: { paginationModel: { pageSize: 10 } },
             }}
-            pageSizeOptions={[10, 200, 50, 100]}
+            pageSizeOptions={[10, 25, 50, 100]}
             disableRowSelectionOnClick
-            autoHeight={false}
             onCellClick={handleCellClick}
             sx={{
-              border: 0,
               height: '100%',
+              border: 0,
               '& .MuiDataGrid-columnHeaders': {
-                bgcolor: theme.palette.primary.main,
+                backgroundColor: '#000202ff',
                 color: theme.palette.text.primary,
                 fontWeight: 600,
               },
@@ -245,8 +246,10 @@ export default function DrugTable() {
             }}
           />
         </Box>
+
       </Box>
     </Box>
-);
+  );
+
 
 }
