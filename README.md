@@ -18,3 +18,11 @@ The **Drug Info App** is a full-stack application designed to manage and display
 Refer to the individual README files for setup instructions:
 - [Frontend README](./frontend/README.md)
 - [Backend README](./backend/README.md)
+
+## Running the App Locally
+
+To run the app locally, make sure the following ports are available:
+- **Port 5000**: Used for the frontend (configured in `vite.config.ts`). Otherwise it will throw CORS error.
+- **Port 4000**: Used for the backend.
+
+If these ports are occupied, you can change them in the respective `.env` files for the frontend and backend.

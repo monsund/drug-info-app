@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { DataGrid, type GridCellParams, type GridColDef } from '@mui/x-data-grid';
 import { fetchDrugs, fetchTableConfig } from '../api/drugApi';
-import { Autocomplete, useTheme } from '@mui/material';
+import { Autocomplete, CircularProgress, useTheme } from '@mui/material';
 
 type Drug = {
   _id?: string;
@@ -155,7 +155,20 @@ export default function DrugTable() {
     setSelectedCompany((prev) => (prev === company ? '' : company));
   };
 
-  if (loading) return <div>Loading drug data…</div>;
+  if (loading) {
+    return (
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100%',
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
+  }
   if (error) return <div>{error}</div>;
 
   return (

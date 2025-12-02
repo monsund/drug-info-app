@@ -10,8 +10,7 @@ const app = express();
 
 // Middlewares
 app.use(cors({
-  origin: "https://drug-info-app.vercel.app",
-  methods: ["GET"],
+  origin: ["https://drug-info-app-two.vercel.app", "http://localhost:5000"],
 }));
 app.use(express.json());
 
