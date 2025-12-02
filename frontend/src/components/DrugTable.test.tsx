@@ -1,9 +1,8 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ThemeProvider, CssBaseline, createTheme } from '@mui/material';
 
-// 🔹 Mock @mui/x-data-grid so its CSS (index.css) is never imported
 vi.mock('@mui/x-data-grid', () => {
   return {
     DataGrid: (props: any) => {
@@ -18,7 +17,7 @@ vi.mock('@mui/x-data-grid', () => {
   };
 });
 
-// 🔹 Mock the API module
+// Mock the API module
 vi.mock('../api/drugApi', () => ({
   fetchDrugs: vi.fn(),
   fetchTableConfig: vi.fn(),
@@ -57,20 +56,18 @@ describe('DrugTable filtering by company', () => {
   beforeEach(() => {
     vi.resetAllMocks();
 
-    // @ts-expect-error – we know these are mocked above
-    (fetchTableConfig as vi.Mock).mockResolvedValue({
-      data: [
+    // @ts-expect-error
+    (fetchTableConfig as vi.Mock).mockResolvedValue([
         { key: 'id',         label: 'Id' },
         { key: 'code',       label: 'Code' },
         { key: 'name',       label: 'Name' },
         { key: 'company',    label: 'Company' },
         { key: 'launchDate', label: 'Launch Date' },
       ],
-    });
+);
 
-    // @ts-expect-error – we know these are mocked above
-    (fetchDrugs as vi.Mock).mockResolvedValue({
-      data: [
+    // @ts-expect-error
+    (fetchDrugs as vi.Mock).mockResolvedValue([
         {
           _id: '1',
           code: 'AAA-111',
@@ -88,7 +85,7 @@ describe('DrugTable filtering by company', () => {
           launchDate: '2024-02-01T00:00:00Z',
         },
       ],
-    });
+    );
   });
 
   it('shows all drugs by default and filters when a company is selected', async () => {

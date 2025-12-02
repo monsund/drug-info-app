@@ -36,14 +36,14 @@ export default function DrugTable() {
           fetchDrugs(),
           fetchTableConfig(),
         ]);
-
-        const drugsData = (drugsRes as any).data ?? drugsRes;
-        const configData = (configRes as any).data ?? configRes;
-
+        console.log('Fetched drugs:', drugsRes);
+        const drugsData = Array.isArray(drugsRes) ? drugsRes : [];
+        const configData = Array.isArray((configRes as any)) ? (configRes as any) : [];
+        
         setDrugs(drugsData);
         setColumnConfig(configData);
-      } catch (err) {
-        console.error('Error loading drug data:', err);
+      } catch (error) {
+        console.error('Error loading drug data:', error);
         setError('Failed to load data');
       } finally {
         setLoading(false);
@@ -55,7 +55,7 @@ export default function DrugTable() {
 
   const companies = useMemo(
     () =>
-      Array.from(new Set(drugs.map((d) => d.company)))
+      Array.from(new Set(drugs?.map((d) => d?.company)))
         .filter(Boolean)
         .sort((a, b) => a.localeCompare(b)),
     [drugs]
@@ -163,7 +163,6 @@ export default function DrugTable() {
       sx={{
         height: '100%',
         width: '100%',
-        bgcolor: theme.palette.primary.main,
         borderRadius: 1.5,
         overflow: 'hidden',
         boxShadow: 2,
@@ -174,14 +173,14 @@ export default function DrugTable() {
       <Box
         sx={{
           bgcolor: theme.palette.primary.main,
-          height: 56,
+          height: 50,
           px: 2,
           display: 'flex',
           alignItems: 'center',
           color: theme.palette.primary.contrastText,
         }}
       >
-        <Typography sx={{ fontWeight: 600 }}>
+        <Typography sx={{ fontWeight: 700 }}>
           Drug List
         </Typography>
       </Box>

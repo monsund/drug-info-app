@@ -1,73 +1,87 @@
-# React + TypeScript + Vite
+# Drug Info App - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend for the **Drug Info App**, built with React, TypeScript, and Material-UI. It provides a user-friendly interface for managing and viewing drug-related data.
 
-Currently, two official plugins are available:
+## Features
+- **DataGrid**: Displays drug data in a tabular format with filtering and pagination.
+- **Autocomplete Filter**: Filter drugs by company.
+- **Responsive Design**: Optimized for various screen sizes.
+- **API Integration**: Fetches data from the backend.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
+- **React**: Frontend library for building user interfaces.
+- **TypeScript**: Adds static typing to JavaScript.
+- **Material-UI (MUI)**: Provides pre-styled components.
+- **Axios**: For making API requests.
+- **Vite**: Development server and build tool.
 
-## React Compiler
+## Prerequisites
+- Node.js (v16 or higher)
+- npm or pnpm
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/monsund/drug-info-app.git
+   ```
+2. Navigate to the frontend directory:
+   ```bash
+   cd drug-info-app/frontend
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-## Expanding the ESLint configuration
+## Development
+To start the development server:
+```bash
+npm run dev
+```
+The app will be available at `http://localhost:5173`.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Build
+To create a production build:
+```bash
+npm run build
+```
+The build output will be in the `dist/` directory.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Testing
+To run tests:
+```bash
+npm test
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Environment Variables
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Create a `.env` file in the `frontend` directory based on the `.env.example` file. The `.env.example` file contains placeholders for all required environment variables. For example:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+VITE_API_BASE_URL=http://localhost:{BACKEND_PORT}/api
+```
+
+Ensure the `.env` file is not committed to version control by keeping it listed in `.gitignore`.
+
+## Folder Structure
+```
+frontend/
+├── src/
+│   ├── api/          # API modules
+│   ├── components/   # React components
+│   ├── styles/       # Global styles
+│   ├── App.tsx       # Main app component
+│   └── main.tsx      # Entry point
+├── public/           # Static assets
+├── .env              # Environment variables
+├── package.json      # Project metadata and scripts
+└── vite.config.ts    # Vite configuration
+```
+
+## License
+This project is licensed under the MIT License. See the [LICENSE](../LICENSE) file for details.
+
+## Acknowledgments
+- [React](https://reactjs.org/)
+- [Material-UI](https://mui.com/)
+- [Vite](https://vitejs.dev/)

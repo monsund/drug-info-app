@@ -1,15 +1,8 @@
 import Drug from '../models/drug.js';
+import { drugTableConfig } from '../../config/drugTableConfig.js';
 
 export const getTableConfig = (req, res) => {
-  const config = [
-    { key: 'id', label: 'Id' },
-    { key: 'code', label: 'Code' },
-    { key: 'name', label: 'Name' },
-    { key: 'company', label: 'Company' },
-    { key: 'launchDate', label: 'Launch Date' }
-  ];
-
-  res.json(config);
+  res.json(drugTableConfig);
 };
 
 export const getDrugs = async (req, res) => {

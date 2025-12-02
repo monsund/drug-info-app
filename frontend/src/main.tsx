@@ -20,10 +20,7 @@ const theme = createTheme({
     text: {
       primary: '#111111',
     },
-  },
-  typography: {
-    fontFamily: "Comic Sans MS"
-  },
+  }
 });
 
 createRoot(document.getElementById('root')!).render(
