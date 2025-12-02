@@ -7,7 +7,7 @@ The **Drug Info App** is a full-stack application designed to manage and display
 - [Backend](./backend/README.md): The server-side API for handling data storage and retrieval.
 
 ## Live URLs
-- **Frontend**: [https://drug-info-app.vercel.app](https://drug-info-app.vercel.app)
+- **Frontend**: [https://drug-info-app-two.vercel.app](https://drug-info-app-two.vercel.app)
 - **Backend**: [https://drug-info-app.onrender.com](https://drug-info-app.onrender.com)
 
 ## Features

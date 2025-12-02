@@ -5,7 +5,7 @@ This is the frontend for the **Drug Info App**, built with React, TypeScript, an
 ## Live URL
 
 The frontend is deployed and accessible at:
-[https://drug-info-app.vercel.app](https://drug-info-app.vercel.app)
+[https://drug-info-app-two.vercel.app](https://drug-info-app-two.vercel.app)
 
 ## Features
 - **DataGrid**: Displays drug data in a tabular format with filtering and pagination.
