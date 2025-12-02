@@ -9,12 +9,15 @@ dotenv.config();
 const app = express();
 
 // Middlewares
-app.use(cors());
+app.use(cors({
+  origin: "https://drug-info-app.vercel.app",
+  methods: ["GET"],
+}));
 app.use(express.json());
 
 // Health check
 app.get('/', (req, res) => {
-  res.json({ status: 'backend server is running' });
+  res.json({ status: 'drug-info backend server is running' });
 });
 
 // Routes

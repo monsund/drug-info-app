@@ -2,6 +2,62 @@
 
 This is the backend for the **Drug Info App**, built with Node.js, Express, and MongoDB. It provides APIs for managing and retrieving drug-related data.
 
+## Live URL
+
+The backend is deployed and accessible at:
+[https://drug-info-app.onrender.com](https://drug-info-app.onrender.com)
+
+## Endpoints
+
+### GET Endpoints
+
+1. **Health Check**
+   - **URL**: `/`
+   - **Description**: Returns the status of the backend server.
+   - **Response**:
+     ```json
+     {
+       "status": "drug-info backend server is running"
+     }
+     ```
+
+2. **Drug Information**
+   - **URL**: `/api/drugs`
+   - **Description**: Fetches a list of drugs from the database.
+   - **Response**: Array of drug objects.
+     ```json
+     [
+       {
+         "code": "0006-0568",
+         "genericName": "vorinostat",
+         "company": "Merck Sharp & Dohme Corp.",
+         "brandName": "ZOLINZA",
+         "launchDate": "2004-02-14T23:01:10Z"
+       },
+       {
+         "code": "68828-192",
+         "genericName": "Avobenzone, Octinoxate, Octisalate, Octocrylene",
+         "company": "Jafra cosmetics International",
+         "brandName": "CC Cream Complexion Corrector Medium Dark Broad Spectrum SPF 15",
+         "launchDate": "2011-02-02T08:57:26Z"
+       }
+     ]
+     ```
+
+3. **Table Configuration**
+   - **URL**: `/api/table-config`
+   - **Description**: Fetches the table configuration for the drug data from the configuration file.
+   - **Response**: JSON object containing table configuration.
+     ```json
+     [
+       { "key": "id", "label": "Id" },
+       { "key": "code", "label": "Code" },
+       { "key": "name", "label": "Name" },
+       { "key": "company", "label": "Company" },
+       { "key": "launchDate", "label": "Launch Date" }
+     ]
+     ```
+
 ## Features
 - **RESTful API**: Endpoints for CRUD operations on drug data.
 - **MongoDB Integration**: Stores and retrieves data from a MongoDB database.
@@ -54,7 +110,6 @@ The server will be available at `http://localhost:{PORT}`.
 
 ## Build
 To transpile TypeScript (if applicable):
-```bash
 npm run build
 ```
 
@@ -111,11 +166,3 @@ backend/
 ├── package.json       # Project metadata and scripts
 └── tsconfig.json      # TypeScript configuration
 ```
-
-## License
-This project is licensed under the MIT License. See the [LICENSE](../LICENSE) file for details.
-
-## Acknowledgments
-- [Node.js](https://nodejs.org/)
-- [Express](https://expressjs.com/)
-- [MongoDB](https://www.mongodb.com/)

@@ -2,6 +2,11 @@
 
 This is the frontend for the **Drug Info App**, built with React, TypeScript, and Material-UI. It provides a user-friendly interface for managing and viewing drug-related data.
 
+## Live URL
+
+The frontend is deployed and accessible at:
+[https://drug-info-app.vercel.app](https://drug-info-app.vercel.app)
+
 ## Features
 - **DataGrid**: Displays drug data in a tabular format with filtering and pagination.
 - **Autocomplete Filter**: Filter drugs by company.
@@ -77,11 +82,3 @@ frontend/
 ├── package.json      # Project metadata and scripts
 └── vite.config.ts    # Vite configuration
 ```
-
-## License
-This project is licensed under the MIT License. See the [LICENSE](../LICENSE) file for details.
-
-## Acknowledgments
-- [React](https://reactjs.org/)
-- [Material-UI](https://mui.com/)
-- [Vite](https://vitejs.dev/)

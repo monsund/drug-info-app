@@ -6,6 +6,10 @@ The **Drug Info App** is a full-stack application designed to manage and display
 - [Frontend](./frontend/README.md): The user interface for managing and viewing drug data.
 - [Backend](./backend/README.md): The server-side API for handling data storage and retrieval.
 
+## Live URLs
+- **Frontend**: [https://drug-info-app.vercel.app](https://drug-info-app.vercel.app)
+- **Backend**: [https://drug-info-app.onrender.com](https://drug-info-app.onrender.com)
+
 ## Features
 - **Frontend**: Interactive UI with filtering, pagination, and responsive design.
 - **Backend**: RESTful API with MongoDB integration.

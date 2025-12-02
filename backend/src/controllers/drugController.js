@@ -1,5 +1,5 @@
 import Drug from '../models/drug.js';
-import { drugTableConfig } from '../../config/drugTableConfig.js';
+import { drugTableConfig } from '../config/drugTableConfig.js';
 
 export const getTableConfig = (req, res) => {
   res.json(drugTableConfig);
