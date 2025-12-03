@@ -96,7 +96,6 @@ frontend/
 ├── src/
 │   ├── api/          # API modules
 │   ├── components/   # React components
-│   ├── styles/       # Global styles
 │   ├── App.tsx       # Main app component
 │   └── main.tsx      # Entry point
 ├── public/           # Static assets

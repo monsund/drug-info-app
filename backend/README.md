@@ -161,6 +161,7 @@ backend/
 │   ├── db/            # Database connection
 │   ├── models/        # Mongoose models
 │   ├── routes/        # API routes
+│   ├── seedDrugs.js   # Script to seed the database
 │   └── index.ts       # Entry point
 ├── .env               # Environment variables
 ├── package.json       # Project metadata and scripts
