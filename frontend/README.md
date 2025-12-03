@@ -68,6 +68,28 @@ VITE_API_BASE_URL=http://localhost:{BACKEND_PORT}/api
 
 Ensure the `.env` file is not committed to version control by keeping it listed in `.gitignore`.
 
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm run dev`
+Starts the development server using Vite. The app will reload if you make edits.
+
+### `npm run build`
+Builds the app for production. This includes TypeScript compilation and Vite bundling.
+
+### `npm run preview`
+Previews the production build locally using Vite.
+
+### `npm run lint`
+Runs ESLint to analyze the code for potential issues and enforce coding standards.
+
+### `npm run test`
+Runs the test suite using Vitest.
+
+### `npm run test:coverage`
+Runs the test suite and generates a code coverage report.
+
 ## Folder Structure
 ```
 frontend/

@@ -38,7 +38,7 @@ export default function DrugTable() {
         ]);
         console.log('Fetched drugs:', drugsRes);
         const drugsData = Array.isArray(drugsRes) ? drugsRes : [];
-        const configData = Array.isArray((configRes as any)) ? (configRes as any) : [];
+        const configData = Array.isArray(configRes) ? (configRes) : [];
         
         setDrugs(drugsData);
         setColumnConfig(configData);
@@ -173,6 +173,7 @@ export default function DrugTable() {
 
   return (
     <Box
+      data-testid="drug-table-container"
       sx={{
         height: '100%',
         width: '100%',
@@ -184,6 +185,7 @@ export default function DrugTable() {
       }}
     >
       <Box
+        data-testid="drug-table-header"
         sx={{
           bgcolor: theme.palette.primary.main,
           height: 50,
@@ -193,12 +195,13 @@ export default function DrugTable() {
           color: theme.palette.primary.contrastText,
         }}
       >
-        <Typography sx={{ fontWeight: 700 }}>
+        <Typography data-testid="drug-table-title" sx={{ fontWeight: 700 }}>
           Drug List
         </Typography>
       </Box>
 
       <Box
+        data-testid="drug-table-content"
         sx={{
           flexGrow: 1,
           minHeight: 0,
@@ -210,6 +213,7 @@ export default function DrugTable() {
         }}
       >
         <Box
+          data-testid="drug-table-filter"
           sx={{
             mb: 2,
             display: 'flex',
@@ -219,6 +223,7 @@ export default function DrugTable() {
           }}
         >
           <Autocomplete
+            data-testid="company-filter"
             size="small"
             options={companies}
             value={selectedCompany}
@@ -234,7 +239,7 @@ export default function DrugTable() {
           />
         </Box>
 
-        <Box sx={{ flexGrow: 1, minHeight: 0 }}>
+        <Box data-testid="drug-table-grid" sx={{ flexGrow: 1, minHeight: 0 }}>
           <DataGrid
             rows={gridRows}
             columns={gridColumns}
@@ -258,7 +263,6 @@ export default function DrugTable() {
             }}
           />
         </Box>
-
       </Box>
     </Box>
   );

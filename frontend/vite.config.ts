@@ -11,6 +11,18 @@ export default defineConfig({
     setupFiles: './src/setupTests.ts',
     globals: true,
     css: true,
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'html', 'lcov'],
+      reportsDirectory: './coverage',
+      include: ['src/**/*.{ts,tsx}'],
+      exclude: [
+        'src/main.tsx',
+        'src/App.tsx',
+        'src/vite-env.d.ts',
+        '**/*.test.{ts,tsx}',
+      ],
+    },
   },
   server: {
     port: 5000,
